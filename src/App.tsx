@@ -1,9 +1,9 @@
-import { Button } from "@heroui/button";
+import Topbar from './components/Topbar.tsx';
 
 export default function App() {
 	return (
-		<Button color="primary" variant="ghost">
-			Button
-		</Button>
+		<div className="text-foreground bg-background min-h-screen">
+			<Topbar />
+		</div>
 	);
 }
