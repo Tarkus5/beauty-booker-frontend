@@ -79,23 +79,12 @@ export default {
             background: '#F7F7F5',
             foreground: '#1F1F2F',
             content1: {
-              DEFAULT: '#f2e8ff',
+              DEFAULT: '#FFF',
               foreground: '#000',
             },
-            content2: {
-              DEFAULT: '#e8daff',
-              foreground: '#000',
-            },
-            content3: {
-              DEFAULT: '#dccbff',
-              foreground: '#000',
-            },
-            content4: {
-              DEFAULT: '#cfbcff',
-              foreground: '#000',
-            },
-            focus: '#7828c8',
+            focus: '#BBDE1D',
             overlay: '#000000',
+            divider: "FFF"
           },
         },
         dark: {
