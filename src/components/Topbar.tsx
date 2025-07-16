@@ -16,7 +16,9 @@ const Topbar = ({ username = 'Alessandro' }: TopbarProps) => {
         name={username}
         showFallback
         size="md"
-        className="bg-primary text-default-900"
+        isBordered
+        color="primary"
+        className="text-default-900 text-md"
         />
     </div>
   );
