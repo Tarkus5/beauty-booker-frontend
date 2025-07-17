@@ -19,7 +19,7 @@ export default function App() {
       const target = e.target as HTMLElement;
       const anchor = target.closest('a');
 
-      if (anchor && anchor.getAttribute('href')?.startsWith('/')) {
+      if (anchor?.getAttribute('href')?.startsWith('/')) {
         e.preventDefault();
         const path = anchor.getAttribute('href') as string;
         window.history.pushState({}, '', path);

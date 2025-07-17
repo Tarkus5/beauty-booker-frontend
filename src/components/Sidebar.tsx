@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { type KeyboardEvent, useEffect, useState } from 'react';
 import routes from '../routes';
 import Logo from './Logo';
 import NavigationLink from './NavigationLink';
@@ -22,6 +22,13 @@ const Sidebar = ({ onLinkClick }: SidebarProps) => {
     };
   }, []);
 
+  const handleKey = (e: KeyboardEvent<HTMLLIElement>) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onLinkClick?.();
+    }
+  };
+
   return (
     <div className="flex flex-col justify-between items-center h-full w-full md:w-56 p-4">
       <div className="w-full">
@@ -31,10 +38,17 @@ const Sidebar = ({ onLinkClick }: SidebarProps) => {
 
         <nav className="w-full">
           <ul className="space-y-4 w-full">
-            {routes.map((route, idx) => {
+            {routes.map((route) => {
               const isActive = activePath === route.path;
               return (
-                <li key={idx} className="w-full" onClick={onLinkClick}>
+                <li
+                  key={route.path}
+                  className="w-full"
+                  onClick={onLinkClick}
+                  onKeyDown={handleKey}
+                  role="button"
+                  tabIndex={0}
+                >
                   <NavigationLink path={route.path} isActive={isActive} icon={route.icon}>
                     {route.name}
                   </NavigationLink>

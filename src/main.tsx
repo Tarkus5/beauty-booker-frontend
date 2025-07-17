@@ -4,7 +4,12 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+const container = document.getElementById('root');
+if (!container) {
+  throw new Error('Root element non trovato');
+}
+
+ReactDOM.createRoot(container).render(
   <React.StrictMode>
     <HeroUIProvider>
       <App />

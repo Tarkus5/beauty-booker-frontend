@@ -1,6 +1,5 @@
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { Button, Card } from '@heroui/react';
-import { useState } from 'react';
+import { Card } from '@heroui/react';
+import { type KeyboardEvent, useState } from 'react';
 import Sidebar from '../components/Sidebar';
 import Topbar from '../components/Topbar';
 import type { LayoutProps } from '../types';
@@ -10,6 +9,13 @@ const DefaultLayout = ({ children }: LayoutProps) => {
 
   const closeSidebar = () => setSidebarOpen(false);
   const toggleSidebar = () => setSidebarOpen((open) => !open);
+
+  const handleKey = (e: KeyboardEvent<HTMLLIElement>) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onLinkClick?.();
+    }
+  };
 
   return (
     <div className="text-foreground bg-background h-screen flex items-center justify-center p-4 lg:p-8 overflow-hidden">
@@ -36,6 +42,7 @@ const DefaultLayout = ({ children }: LayoutProps) => {
           md:hidden
         `}
         onClick={closeSidebar}
+        onKeyDown={handleKey}
       />
 
       <div className="flex-1 h-[95vh] flex flex-col ml-0 md:ml-8">
