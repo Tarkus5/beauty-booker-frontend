@@ -21,7 +21,7 @@ const NavigationLink = ({ path, isActive, icon: Icon, children }: NavigationLink
       className={`flex items-center gap-3 py-2 px-4 rounded-full transition-colors 
       ${
         isActive
-          ? 'bg-primary text-default-900'
+          ? 'bg-primary text-default'
           : 'text-white hover:bg-primary hover:text-default-900'
       }`}
     >

@@ -56,10 +56,10 @@ const Topbar = ({ username = 'Alessandro', onToggleSidebar }: TopbarProps) => {
         <Button
           isIconOnly
           variant="shadow"
-          className="bg-divider md:hidden ml-2"
+          className="bg-divider md:hidden ml-2 dark:bg-default"
           onPress={onToggleSidebar}
         >
-          <Bars3Icon className="w-6 h-6 text-default" />
+          <Bars3Icon className="w-6 h-6 text-default dark:text-foreground" />
         </Button>
       </div>
     </div>
