@@ -1,52 +1,43 @@
 import { useEffect, useState } from 'react';
-import { ThemeSwitcher } from './ThemeSwitcher.tsx';
 import routes from '../routes';
 import Logo from './Logo';
 import NavigationLink from './NavigationLink';
+import { ThemeSwitcher } from './ThemeSwitcher.tsx';
 
-const Sidebar = () => {
+interface SidebarProps {
+  onLinkClick?: () => void;
+}
+
+const Sidebar = ({ onLinkClick }: SidebarProps) => {
   const [activePath, setActivePath] = useState('/');
 
   useEffect(() => {
-    const updateActivePath = () => {
-      setActivePath(window.location.pathname);
-    };
-
-    // Imposta il percorso iniziale
+    const updateActivePath = () => setActivePath(window.location.pathname);
     updateActivePath();
-
-    // Aggiorna il percorso attivo quando cambia la location
     window.addEventListener('popstate', updateActivePath);
-
-    // Custom event per aggiornare il percorso quando la navigazione viene gestita nell'App
-    const handleCustomNavigation = () => updateActivePath();
-    window.addEventListener('navigationChange', handleCustomNavigation);
-
+    window.addEventListener('navigationChange', updateActivePath);
     return () => {
       window.removeEventListener('popstate', updateActivePath);
-      window.removeEventListener('navigationChange', handleCustomNavigation);
+      window.removeEventListener('navigationChange', updateActivePath);
     };
   }, []);
 
   return (
-    <div className="flex flex-col justify-between items-center bg-default h-[95vh] w-56 ml-8 rounded-[24px] p-4">
+    <div className="flex flex-col justify-between items-center h-full w-full md:w-56 p-4">
       <div className="w-full">
-        <Logo />
+        <div className="hidden md:block mb-6">
+          <Logo />
+        </div>
 
         <nav className="w-full">
           <ul className="space-y-4 w-full">
-            {routes.map((route, index) => {
+            {routes.map((route, idx) => {
               const isActive = activePath === route.path;
-
               return (
-                <li key={index} className="w-full">
-					                  <NavigationLink 
-					                    path={route.path} 
-					                    isActive={isActive} 
-					                    icon={route.icon}
-					                  >
-					                    {route.name}
-					                  </NavigationLink>
+                <li key={idx} className="w-full" onClick={onLinkClick}>
+                  <NavigationLink path={route.path} isActive={isActive} icon={route.icon}>
+                    {route.name}
+                  </NavigationLink>
                 </li>
               );
             })}
@@ -54,10 +45,9 @@ const Sidebar = () => {
         </nav>
       </div>
 
-      <div>
-        <ThemeSwitcher />
-      </div>
+      <ThemeSwitcher />
     </div>
   );
 };
+
 export default Sidebar;

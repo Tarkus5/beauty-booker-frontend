@@ -1,4 +1,9 @@
-import {CalendarIcon, Squares2X2Icon, UserIcon, WrenchScrewdriverIcon} from '@heroicons/react/24/outline';
+import {
+  CalendarIcon,
+  Squares2X2Icon,
+  UserIcon,
+  WrenchScrewdriverIcon,
+} from '@heroicons/react/24/outline';
 import type { Route } from '../types';
 
 const routes: Route[] = [

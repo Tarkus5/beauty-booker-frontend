@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import DefaultLayout from './layouts/DefaultLayout';
-import Dashboard from './pages/Dashboard';
 import Calendar from './pages/Calendar';
+import Dashboard from './pages/Dashboard';
 import Services from './pages/Services';
 
 export default function App() {
@@ -45,9 +45,5 @@ export default function App() {
     return <Component />;
   };
 
-  return (
-    <DefaultLayout>
-      {renderContent()}
-    </DefaultLayout>
-  );
+  return <DefaultLayout>{renderContent()}</DefaultLayout>;
 }

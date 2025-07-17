@@ -84,7 +84,7 @@ export default {
             },
             focus: '#BBDE1D',
             overlay: '#000000',
-            divider: "FFF"
+            divider: 'FFF',
           },
         },
         dark: {
