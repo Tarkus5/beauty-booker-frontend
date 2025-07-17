@@ -1,5 +1,5 @@
 import { Card } from '@heroui/react';
-import { type KeyboardEvent, useState } from 'react';
+import { useState } from 'react';
 import Sidebar from '../components/Sidebar';
 import Topbar from '../components/Topbar';
 import type { LayoutProps } from '../types';
